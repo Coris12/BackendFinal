@@ -1,10 +1,16 @@
 package com.Caso1Backend.back.security.models;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -12,10 +18,11 @@ import javax.persistence.Id;
  */
 //crear
 @Entity
+@Table(name = "vehiculo")
 public class Vehiculo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String placa;
+    
     private String modelo;
     private String marca;
     private String color;
@@ -27,6 +34,8 @@ public class Vehiculo {
     private String ramv;
     private String stock;
     private int garantia;
+
+    
 
     public Vehiculo(String placa, String modelo, String marca, String color, double precio, String descripcion_vehiculo, int numero_chasis, int numero_motor, Date anio_fabricacion, String ramv, String stock, int garantia) {
         this.placa = placa;
@@ -42,6 +51,11 @@ public class Vehiculo {
         this.stock = stock;
         this.garantia = garantia;
     }
+    
+
+    public Vehiculo() {
+    }
+
 
     public String getPlaca() {
         return placa;

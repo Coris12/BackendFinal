@@ -6,23 +6,31 @@
 package com.Caso1Backend.back.security.models;
 
 import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
  * @author corin
  */
 @Entity
+@Table(name = "cliente")
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_cliente;
     private String cedula;
     private String nombre;
@@ -33,13 +41,22 @@ public class Cliente {
     @JoinColumn(name = "id")
     private Usuario usuario;
 
-    public Cliente(int id_cliente, String cedula, String nombre, String apellido, Date fecha_nacimiento, Usuario usuario) {
+    @JsonIgnore
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<FacturaCabecera> factura;
+
+    public Cliente() {
+    }
+
+    public Cliente(int id_cliente, String cedula, String nombre, String apellido, Date fecha_nacimiento,
+            Usuario usuario, List<FacturaCabecera> factura) {
         this.id_cliente = id_cliente;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fecha_nacimiento = fecha_nacimiento;
         this.usuario = usuario;
+        this.factura = factura;
     }
 
     public int getId_cliente() {
@@ -89,6 +106,16 @@ public class Cliente {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public List<FacturaCabecera> getFactura() {
+        return factura;
+    }
+
+    public void setFactura(List<FacturaCabecera> factura) {
+        this.factura = factura;
+    }
+
+   
     
     
 }
