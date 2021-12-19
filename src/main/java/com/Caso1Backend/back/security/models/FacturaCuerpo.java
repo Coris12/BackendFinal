@@ -23,9 +23,9 @@ public class FacturaCuerpo {
     private int iva;
     private Double total;
 
-    // @JoinColumn(name = "id_factura")
-    // @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    // private FacturaCabecera facturaCabecera;
+     @JoinColumn(name = "id_factura" ,referencedColumnName = "id_factura", insertable = false, updatable = false)
+     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+     private FacturaCabecera facturaCabecera;
     @Column(name = "id_factura")
     private int id_factura;
 

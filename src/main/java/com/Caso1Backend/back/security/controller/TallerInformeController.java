@@ -28,12 +28,12 @@ public class TallerInformeController  {
 	TallerInformeService taller;
 	
 	@GetMapping()
-	private ResponseEntity<List<TallerInforme>> obtenerInforme(){
+	private ResponseEntity<List<TallerInforme>> obtener(){
 		return ResponseEntity.ok(taller.findAll());
 	}
 	
 	@PostMapping()
-    private ResponseEntity<TallerInforme> saveInforme(@RequestBody TallerInforme tallerinforme) throws URISyntaxException{
+    private ResponseEntity<TallerInforme> save(@RequestBody TallerInforme tallerinforme) throws URISyntaxException{
         try {
             TallerInforme informe = taller.save(tallerinforme);
             return ResponseEntity.created(new URI("/informe/"+ informe.getId_InformeTaller())).body(informe);

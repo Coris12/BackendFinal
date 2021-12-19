@@ -1,4 +1,4 @@
-package com.Caso1Backend.back.service;
+package com.Caso1Backend.back.security.service;
 
 import com.Caso1Backend.back.security.repository.ProductoRepository;
 import com.Caso1Backend.back.security.models.Producto;
