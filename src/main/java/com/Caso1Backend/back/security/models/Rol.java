@@ -8,6 +8,7 @@ package com.Caso1Backend.back.security.models;
 
 import com.Caso1Backend.back.security.enums.RolNombre;
 import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
