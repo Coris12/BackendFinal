@@ -20,13 +20,22 @@ public class Reclamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_reclamo;
 
-    private String id_cliente;
+   
     private int tiempo;
     private String motivo;
     private String placa;
     private int numero_chasis;
     private String marca;
     private String modelo;
+    
+    
+    @Column(name = "id_cliente", nullable = false)
+    private Long id_cliente;
+
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Cliente cliente;
 
     @Column(name = "id_garantia", nullable = false)
     private int id_garantia;
@@ -39,7 +48,7 @@ public class Reclamo {
     public Reclamo() {
     }
 
-    public Reclamo(int id_reclamo, String id_cliente, int tiempo, String motivo, String placa,
+    public Reclamo(int id_reclamo, Long id_cliente, int tiempo, String motivo, String placa,
             int numero_chasis, String marca, String modelo) {
         this.id_reclamo = id_reclamo;
 
@@ -60,13 +69,23 @@ public class Reclamo {
         this.id_reclamo = id_reclamo;
     }
 
-    public String getId_cliente() {
+    public Long getId_cliente() {
         return id_cliente;
     }
 
-    public void setId_cliente(String id_cliente) {
+    public void setId_cliente(Long id_cliente) {
         this.id_cliente = id_cliente;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+  
 
     public int getTiempo() {
         return tiempo;

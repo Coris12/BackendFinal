@@ -29,21 +29,27 @@ public class TallerSolicitud {
     private Cliente cliente;
 
     private String placa;
-    private String repuestos;
+    
+    @JoinColumn(name = "id_repuesto", referencedColumnName = "id_repuesto", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Repuestos Repuestos;
+ 
     private String descripcion;
 
     public TallerSolicitud() {
 
     }
 
-    public TallerSolicitud(Integer id_solicitud, Long id_cliente, Cliente cliente, String placa, String repuestos, String descripcion) {
+    public TallerSolicitud(Integer id_solicitud, Long id_cliente, Cliente cliente, String placa, int id_repuestos, String descripcion) {
         this.id_solicitud = id_solicitud;
         this.id_cliente = id_cliente;
         this.cliente = cliente;
         this.placa = placa;
-        this.repuestos = repuestos;
+       
         this.descripcion = descripcion;
     }
+
 
     public Long getId_cliente() {
         return id_cliente;
@@ -77,13 +83,9 @@ public class TallerSolicitud {
         this.placa = placa;
     }
 
-    public String getRepuestos() {
-        return repuestos;
-    }
+    
 
-    public void setRepuestos(String repuestos) {
-        this.repuestos = repuestos;
-    }
+
 
     public String getDescripcion() {
         return descripcion;
