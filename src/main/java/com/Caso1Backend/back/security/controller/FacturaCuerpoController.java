@@ -1,5 +1,6 @@
 package com.Caso1Backend.back.security.controller;
 
+import com.Caso1Backend.back.security.models.Cliente;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +35,12 @@ public class FacturaCuerpoController {
     @GetMapping(path = "facturas")
     public List<FacturaCabecera> buscar(){
         return facturaCabeceraRepository.findAll();
+    }
+    
+    @GetMapping(path = {"{id}"})
+    public Optional<FacturaCabecera> facturaById(@PathVariable("id")int id){
+        System.out.println("entro en buscar factura by id");
+        return facturaCabeceraRepository.findById(id);
     }
 
     @PostMapping(path = "guardar")
