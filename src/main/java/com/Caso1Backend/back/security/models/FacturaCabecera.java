@@ -33,8 +33,8 @@ public class FacturaCabecera {
 	private Long id_cliente;
 	
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente",insertable = false, updatable = false)
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Cliente cliente;
 
     @OneToMany(mappedBy = "id_factura")
@@ -83,6 +83,14 @@ public class FacturaCabecera {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
 

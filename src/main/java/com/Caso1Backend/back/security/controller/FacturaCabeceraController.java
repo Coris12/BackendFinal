@@ -22,11 +22,17 @@ public class FacturaCabeceraController {
     @Autowired
     FacturaCabeceraService facturaCabeceraService;
 
-    @GetMapping()
-    private ResponseEntity<List<FacturaCabecera>> getAllCotizaciones(){
+////    @GetMapping()
+////    private ResponseEntity<List<FacturaCabecera>> getAllCotizaciones(){
+////         return ResponseEntity.ok(facturaCabeceraService.findAll());
+////    }
+
+     @GetMapping()
+    private ResponseEntity<List<FacturaCabecera>> getAllFacturas(){
+        System.out.println("ENCONTO" + facturaCabeceraService.findAll().size());
         return ResponseEntity.ok(facturaCabeceraService.findAll());
     }
-
+    
     @PostMapping()
     private ResponseEntity<FacturaCabecera> saveCabecera(@RequestBody FacturaCabecera facturaCabecera){
         try {
