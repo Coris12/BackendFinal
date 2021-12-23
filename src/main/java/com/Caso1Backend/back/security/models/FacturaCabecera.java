@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity 
+@Entity
 @Table(name = "factura_cabecera")
 public class FacturaCabecera {
 
@@ -29,91 +29,80 @@ public class FacturaCabecera {
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
-    @Column(name = "id_cliente", nullable = false)
-	private Long id_cliente;
-	
-	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente",insertable = false, updatable = false)
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Cliente cliente;
+    private Double total;
+
+    //@Column(name = "id_cliente", nullable = false)
+    //private Long id_cliente;
+
+    //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_cliente")
+    @ManyToOne()
+    private Cliente cliente; 
 
     @OneToMany(mappedBy = "id_factura")
     private List<FacturaCuerpo> detalleList;
 
-   
-
     public FacturaCabecera() {
     }
 
-
-
-    public FacturaCabecera(int id_factura, String tipo, Date fecha, Long id_cliente, List<FacturaCuerpo> detalleList) {
+    public FacturaCabecera(int id_factura, String tipo, Date fecha, Double total, Cliente cliente,
+            List<FacturaCuerpo> detalleList) {
         this.id_factura = id_factura;
         this.tipo = tipo;
         this.fecha = fecha;
-        this.id_cliente = id_cliente;
+        this.total = total;
+        this.cliente = cliente;
         this.detalleList = detalleList;
     }
-
-
 
     public int getId_factura() {
         return id_factura;
     }
 
-
-
     public void setId_factura(int id_factura) {
         this.id_factura = id_factura;
     }
-
-
 
     public String getTipo() {
         return tipo;
     }
 
-
-
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
-
 
     public Date getFecha() {
         return fecha;
     }
 
-
-
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-
-
-    public Long getId_cliente() {
-        return id_cliente;
+    public Double getTotal() {
+        return total;
     }
 
-
-
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
 
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     public List<FacturaCuerpo> getDetalleList() {
         return detalleList;
     }
-
-
 
     public void setDetalleList(List<FacturaCuerpo> detalleList) {
         this.detalleList = detalleList;
     }
 
     
+
 }

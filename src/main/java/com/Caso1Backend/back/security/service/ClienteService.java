@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteService {
-
+ 
     @Autowired
     private ClienteRepository clienteRepository;
 
@@ -38,6 +38,21 @@ public class ClienteService {
 
     public void deleteById(int id) {
         clienteRepository.deleteById(id);
+    }
+
+    public Cliente existe(String cedula) {
+
+        return clienteRepository.findByCedula(cedula);
+
+    }
+
+    public boolean xt(String cedula) {
+
+        if (clienteRepository.findByCedula(cedula) != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

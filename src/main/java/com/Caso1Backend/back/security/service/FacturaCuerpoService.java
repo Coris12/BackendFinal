@@ -28,7 +28,14 @@ public class FacturaCuerpoService {
     }
 
 
-    //metodo ingreso de factura
+    public boolean pf(String placa) {
+
+        if (facturaCuerpoRepository.findByPlaca(placa) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     

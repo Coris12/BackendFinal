@@ -21,7 +21,7 @@ public class Reclamo {
     private int id_reclamo;
 
     private String id_cliente;
-    private int tiempo;
+    private String nombre;
     private String motivo;
     private String placa;
     private int numero_chasis;
@@ -39,17 +39,18 @@ public class Reclamo {
     public Reclamo() {
     }
 
-    public Reclamo(int id_reclamo, String id_cliente, int tiempo, String motivo, String placa,
-            int numero_chasis, String marca, String modelo) {
+    public Reclamo(int id_reclamo, String id_cliente, String nombre, String motivo, String placa, int numero_chasis,
+            String marca, String modelo, int id_garantia, SolicitudGarantia solicitudGarantia) {
         this.id_reclamo = id_reclamo;
-
         this.id_cliente = id_cliente;
-        this.tiempo = tiempo;
+        this.nombre = nombre;
         this.motivo = motivo;
         this.placa = placa;
         this.numero_chasis = numero_chasis;
         this.marca = marca;
         this.modelo = modelo;
+        this.id_garantia = id_garantia;
+        this.solicitudGarantia = solicitudGarantia;
     }
 
     public int getId_reclamo() {
@@ -68,12 +69,12 @@ public class Reclamo {
         this.id_cliente = id_cliente;
     }
 
-    public int getTiempo() {
-        return tiempo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTiempo(int tiempo) {
-        this.tiempo = tiempo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getMotivo() {
@@ -116,14 +117,6 @@ public class Reclamo {
         this.modelo = modelo;
     }
 
-    public SolicitudGarantia getSolicitudGarantia() {
-        return solicitudGarantia;
-    }
-
-    public void setSolicitudGarantia(SolicitudGarantia solicitudGarantia) {
-        this.solicitudGarantia = solicitudGarantia;
-    }
-
     public int getId_garantia() {
         return id_garantia;
     }
@@ -132,4 +125,13 @@ public class Reclamo {
         this.id_garantia = id_garantia;
     }
 
+    public SolicitudGarantia getSolicitudGarantia() {
+        return solicitudGarantia;
+    }
+
+    public void setSolicitudGarantia(SolicitudGarantia solicitudGarantia) {
+        this.solicitudGarantia = solicitudGarantia;
+    }
+
+   
 }

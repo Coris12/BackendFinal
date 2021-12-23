@@ -20,34 +20,33 @@ public class FacturaCuerpo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_cuerpo;
     private double subtotal;
-    private int iva;
-    private Double total;
 
     // @JoinColumn(name = "id_factura")
-    // @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    // private FacturaCabecera facturaCabecera;
+    @ManyToOne()
+    private FacturaCabecera facturaCabecera;
+
     @Column(name = "id_factura")
     private int id_factura;
 
     @Column(name = "placa", nullable = true)
     private String placa;
 
-    // (fetch = FetchType.LAZY)
+  
     @JoinColumn(name = "placa", referencedColumnName = "placa", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne()
     private Vehiculo vehiculo;
 
     public FacturaCuerpo() {
     }
 
-    public FacturaCuerpo(int id_cuerpo, double subtotal, int iva, Double total, int id_factura, String placa) {
+    public FacturaCuerpo(int id_cuerpo, double subtotal, FacturaCabecera facturaCabecera, int id_factura, String placa,
+            Vehiculo vehiculo) {
         this.id_cuerpo = id_cuerpo;
         this.subtotal = subtotal;
-        this.iva = iva;
-        this.total = total;
+        this.facturaCabecera = facturaCabecera;
         this.id_factura = id_factura;
         this.placa = placa;
+        this.vehiculo = vehiculo;
     }
 
     public int getId_cuerpo() {
@@ -66,20 +65,12 @@ public class FacturaCuerpo {
         this.subtotal = subtotal;
     }
 
-    public int getIva() {
-        return iva;
+    public FacturaCabecera getFacturaCabecera() {
+        return facturaCabecera;
     }
 
-    public void setIva(int iva) {
-        this.iva = iva;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setFacturaCabecera(FacturaCabecera facturaCabecera) {
+        this.facturaCabecera = facturaCabecera;
     }
 
     public int getId_factura() {
@@ -96,6 +87,14 @@ public class FacturaCuerpo {
 
     public void setPlaca(String placa) {
         this.placa = placa;
-    }    
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
 }

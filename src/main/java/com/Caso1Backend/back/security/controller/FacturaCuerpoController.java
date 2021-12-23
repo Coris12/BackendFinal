@@ -8,6 +8,7 @@ import com.Caso1Backend.back.security.models.FacturaCabecera;
 import com.Caso1Backend.back.security.models.FacturaCuerpo;
 import com.Caso1Backend.back.security.repository.FacturaCabeceraRepository;
 import com.Caso1Backend.back.security.repository.FacturaCuerpoRepository;
+import com.Caso1Backend.back.security.service.FacturaCuerpoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,15 @@ public class FacturaCuerpoController {
     @Autowired
     FacturaCuerpoRepository facturaCuerpoRepository;
 
+    @Autowired 
+    FacturaCuerpoService facturaCuerpoService;
+
+
+    @GetMapping("pf/{placa}") 
+    public boolean pf(@PathVariable String placa){
+    
+       return facturaCuerpoService.pf(placa);
+    }
     
     @GetMapping(path = "facturas")
     public List<FacturaCabecera> buscar(){

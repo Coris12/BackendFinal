@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -20,23 +22,22 @@ public class Cotizacion {
     private String nombre;
     private String correo;
     private Date fecha_nacimiento;
-    private String modelo;
-    private String marca;
-    private String estado;
+    @ManyToOne
+    @JoinColumn(name = "placa")
+    private Vehiculo vehiculo;
 
     public Cotizacion() {
     }
 
-    public Cotizacion(String cedula, String nombre, String correo, Date fecha_nacimiento, String modelo, String marca,
-            String estado) {
+   
+    public Cotizacion(String cedula, String nombre, String correo, Date fecha_nacimiento, Vehiculo vehiculo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.correo = correo;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.modelo = modelo;
-        this.marca = marca;
-        this.estado = estado;
+        this.vehiculo = vehiculo;
     }
+
 
     public int getId_cotizacion() {
         return id_cotizacion;
@@ -78,30 +79,11 @@ public class Cotizacion {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public String getModelo() {
-        return modelo;
+    public Vehiculo getVehiculo() {
+        return vehiculo;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
     }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-
-    
 }

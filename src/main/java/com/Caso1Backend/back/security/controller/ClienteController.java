@@ -26,6 +26,13 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    @GetMapping("xt/{cedula}") 
+    public boolean xt(@PathVariable  String cedula){
+    
+       return clienteService.xt(cedula);
+
+    }
+
     @GetMapping()
     private ResponseEntity<List<Cliente>> getAllCotizaciones(){
         return ResponseEntity.ok(clienteService.findAll());
