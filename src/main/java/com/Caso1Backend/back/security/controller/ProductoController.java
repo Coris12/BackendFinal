@@ -5,7 +5,7 @@ package com.Caso1Backend.back.security.controller;
 import com.Caso1Backend.back.dto.Mensaje;
 import com.Caso1Backend.back.dto.ProductoDto;
 
-import com.Caso1Backend.back.service.ProductoService;
+import com.Caso1Backend.back.security.service.ProductoService;
 import com.Caso1Backend.back.security.models.Producto;
 
 import org.apache.commons.lang3.StringUtils;

@@ -49,7 +49,7 @@ public class Cliente {
     }
 
     public Cliente(int id_cliente, String cedula, String nombre, String apellido, Date fecha_nacimiento,
-            Usuario usuario, List<FacturaCabecera> factura) {
+          Usuario usuario, List<FacturaCabecera> factura) {
         this.id_cliente = id_cliente;
         this.cedula = cedula;
         this.nombre = nombre;

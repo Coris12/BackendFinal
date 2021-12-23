@@ -34,7 +34,7 @@ public class ClienteController {
     }
 
     @GetMapping()
-    private ResponseEntity<List<Cliente>> getAllCotizaciones(){
+    private ResponseEntity<List<Cliente>> getAllClientes(){
         return ResponseEntity.ok(clienteService.findAll());
     }
 
