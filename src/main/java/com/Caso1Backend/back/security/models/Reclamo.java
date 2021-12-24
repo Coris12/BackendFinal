@@ -16,11 +16,21 @@ import javax.persistence.Table;
 @Table(name = "reclamo")
 public class Reclamo {
 
+    public static Object findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_reclamo;
-
-    private String id_cliente;
+  @Column(name = "id_cliente", nullable = false)
+	private Long id_cliente;
+	
+	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente",insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Cliente cliente;
+    
     private String nombre;
     private String motivo;
     private String placa;
@@ -32,17 +42,17 @@ public class Reclamo {
     private int id_garantia;
 
     @JoinColumn(name = "id_garantia", referencedColumnName = "id_garantia", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private SolicitudGarantia solicitudGarantia;
 
     public Reclamo() {
     }
 
-    public Reclamo(int id_reclamo, String id_cliente, String nombre, String motivo, String placa, int numero_chasis,
-            String marca, String modelo, int id_garantia, SolicitudGarantia solicitudGarantia) {
+    public Reclamo(int id_reclamo, Long id_cliente, Cliente cliente, String nombre, String motivo, String placa, int numero_chasis, String marca, String modelo, int id_garantia, SolicitudGarantia solicitudGarantia) {
         this.id_reclamo = id_reclamo;
         this.id_cliente = id_cliente;
+        this.cliente = cliente;
         this.nombre = nombre;
         this.motivo = motivo;
         this.placa = placa;
@@ -53,6 +63,7 @@ public class Reclamo {
         this.solicitudGarantia = solicitudGarantia;
     }
 
+  
     public int getId_reclamo() {
         return id_reclamo;
     }
@@ -61,13 +72,7 @@ public class Reclamo {
         this.id_reclamo = id_reclamo;
     }
 
-    public String getId_cliente() {
-        return id_cliente;
-    }
-
-    public void setId_cliente(String id_cliente) {
-        this.id_cliente = id_cliente;
-    }
+    
 
     public String getNombre() {
         return nombre;
@@ -131,6 +136,22 @@ public class Reclamo {
 
     public void setSolicitudGarantia(SolicitudGarantia solicitudGarantia) {
         this.solicitudGarantia = solicitudGarantia;
+    }
+
+    public Long getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(Long id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
    
