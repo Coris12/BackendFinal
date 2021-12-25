@@ -24,7 +24,7 @@ public class SolicitudGarantia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_garantia;
+    private int id_solicitudgarantia;
     private int tiempo;
     private String motivo;
     @ManyToOne
@@ -35,17 +35,12 @@ public class SolicitudGarantia {
     @JoinColumn(name = "placa")
     private Vehiculo vehiculo;
 
-    
-    
-
-
-   
-    public int getId_garantia() {
-        return id_garantia;
+    public int getId_solicitudgarantia() {
+        return id_solicitudgarantia;
     }
 
-    public void setId_garantia(int id_garantia) {
-        this.id_garantia = id_garantia;
+    public void setId_solicitudgarantia(int id_solicitudgarantia) {
+        this.id_solicitudgarantia = id_solicitudgarantia;
     }
 
     public int getTiempo() {

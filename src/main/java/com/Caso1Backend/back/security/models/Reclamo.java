@@ -38,10 +38,10 @@ public class Reclamo {
     private String marca;
     private String modelo;
 
-    @Column(name = "id_garantia", nullable = false)
-    private int id_garantia;
+    @Column(name = "id_solicitudgarantia", nullable = false)
+    private int id_solicitudgarantia;
 
-    @JoinColumn(name = "id_garantia", referencedColumnName = "id_garantia", insertable = false, updatable = false)
+    @JoinColumn(name = "id_solicitudgarantia", referencedColumnName = "id_solicitudgarantia", insertable = false, updatable = false)
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private SolicitudGarantia solicitudGarantia;
@@ -49,7 +49,7 @@ public class Reclamo {
     public Reclamo() {
     }
 
-    public Reclamo(int id_reclamo, Long id_cliente, Cliente cliente, String nombre, String motivo, String placa, int numero_chasis, String marca, String modelo, int id_garantia, SolicitudGarantia solicitudGarantia) {
+    public Reclamo(int id_reclamo, Long id_cliente, Cliente cliente, String nombre, String motivo, String placa, int numero_chasis, String marca, String modelo, int id_solicitudgarantia, SolicitudGarantia solicitudGarantia) {
         this.id_reclamo = id_reclamo;
         this.id_cliente = id_cliente;
         this.cliente = cliente;
@@ -59,7 +59,7 @@ public class Reclamo {
         this.numero_chasis = numero_chasis;
         this.marca = marca;
         this.modelo = modelo;
-        this.id_garantia = id_garantia;
+        this.id_solicitudgarantia = id_solicitudgarantia;
         this.solicitudGarantia = solicitudGarantia;
     }
 
@@ -122,12 +122,12 @@ public class Reclamo {
         this.modelo = modelo;
     }
 
-    public int getId_garantia() {
-        return id_garantia;
+    public int getId_solicitudgarantia() {
+        return id_solicitudgarantia;
     }
 
-    public void setId_garantia(int id_garantia) {
-        this.id_garantia = id_garantia;
+    public void setId_solicitudgarantia(int id_solicitudgarantia) {
+        this.id_solicitudgarantia = id_solicitudgarantia;
     }
 
     public SolicitudGarantia getSolicitudGarantia() {

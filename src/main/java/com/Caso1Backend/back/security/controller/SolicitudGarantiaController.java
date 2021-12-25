@@ -40,7 +40,7 @@ public class SolicitudGarantiaController {
     private ResponseEntity<SolicitudGarantia> saveReclamos(@RequestBody SolicitudGarantia solicitudGarantia){
         try {
             SolicitudGarantia reclamoGuardado = solicitudGarantiaService.save(solicitudGarantia);
-            return ResponseEntity.created(new URI("/garantias/"+ reclamoGuardado.getId_garantia())).body(reclamoGuardado);
+            return ResponseEntity.created(new URI("/solicitudgarantias/"+ reclamoGuardado.getId_solicitudgarantia())).body(reclamoGuardado);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -49,7 +49,7 @@ public class SolicitudGarantiaController {
 
     @PutMapping(path = {"{id}"})
     public SolicitudGarantia editar(@RequestBody SolicitudGarantia c, @PathVariable("id")int id){
-        c.setId_garantia(id);
+        c.setId_solicitudgarantia(id);
         return solicitudGarantiaService.EditarReclamo(c);
     }
 

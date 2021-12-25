@@ -26,11 +26,12 @@ public class FacturaCabecera {
     private int id_factura;
     private String tipo;
 
-    @Temporal(TemporalType.DATE)
+    //@Temporal(TemporalType.DATE)
     private Date fecha;
 
     private Double total;
 
+    
     //@Column(name = "id_cliente", nullable = false)
     //private Long id_cliente;
 
