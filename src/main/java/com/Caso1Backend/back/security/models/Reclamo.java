@@ -45,6 +45,7 @@ public class Reclamo {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private SolicitudGarantia solicitudGarantia;
+    private int estadoReclamo;
 
     public Reclamo() {
     }
@@ -133,6 +134,18 @@ public class Reclamo {
     public SolicitudGarantia getSolicitudGarantia() {
         return solicitudGarantia;
     }
+
+    public int getEstadoReclamo() {
+        return estadoReclamo;
+    }
+
+    public void setEstadoReclamo(int estadoReclamo) {
+        this.estadoReclamo = estadoReclamo;
+    }
+
+   
+   
+    
 
     public void setSolicitudGarantia(SolicitudGarantia solicitudGarantia) {
         this.solicitudGarantia = solicitudGarantia;

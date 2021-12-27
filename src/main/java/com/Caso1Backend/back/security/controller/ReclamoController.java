@@ -32,10 +32,14 @@ public class ReclamoController {
     @PostMapping()
     private ResponseEntity<Reclamo> saveReclamos(@RequestBody Reclamo reclamo){
         try {
+                    reclamo.setEstadoReclamo(1);
+
             Reclamo reclamoGuardado = reclamoService.save(reclamo);
+                 
             return ResponseEntity.created(new URI("/reclamos/"+ reclamoGuardado.getId_reclamo())).body(reclamoGuardado);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            
         }
     }
      @CrossOrigin
