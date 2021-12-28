@@ -32,4 +32,8 @@ public class ReclamoService {
         return reclamoRepository.findById(id);
     }
     
+    public List<Reclamo>search(){
+     return reclamoRepository.findAllActiveUsersNative();
+    }
+    
 }

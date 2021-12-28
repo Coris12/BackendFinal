@@ -28,7 +28,6 @@ public class Reclamo {
 	
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente",insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Cliente cliente;
     
     private String nombre;
@@ -38,6 +37,10 @@ public class Reclamo {
     private String marca;
     private String modelo;
 
+    @JoinColumn(name = "placa", referencedColumnName = "placa",insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Vehiculo vehiculo;    
+
     @Column(name = "id_solicitudgarantia", nullable = false)
     private int id_solicitudgarantia;
 
@@ -45,6 +48,8 @@ public class Reclamo {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private SolicitudGarantia solicitudGarantia;
+    
+    @Column(name = "estado_reclamo")
     private int estadoReclamo;
 
     public Reclamo() {
@@ -73,7 +78,19 @@ public class Reclamo {
         this.id_reclamo = id_reclamo;
     }
 
-    
+    /**
+     * @return the vehiculo
+     */
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    /**
+     * @param vehiculo the vehiculo to set
+     */
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
     public String getNombre() {
         return nombre;
