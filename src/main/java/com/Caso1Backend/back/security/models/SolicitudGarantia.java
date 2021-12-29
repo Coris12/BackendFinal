@@ -5,6 +5,7 @@
  */
 package com.Caso1Backend.back.security.models;
 
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +28,15 @@ public class SolicitudGarantia {
     private int id_solicitudgarantia;
     private int tiempo;
     private String motivo;
+    private Date fecha_solicitud;
+
+    public Date getFecha_solicitud() {
+        return fecha_solicitud;
+    }
+
+    public void setFecha_solicitud(Date fecha_solicitud) {
+        this.fecha_solicitud = fecha_solicitud;
+    }
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
@@ -73,15 +83,5 @@ public class SolicitudGarantia {
 
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
-    }
-
-    
-
-    
-
-    
-
-    
-
-    
+    } 
 }

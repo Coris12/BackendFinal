@@ -1,5 +1,6 @@
 package com.Caso1Backend.back.security.models;
 
+import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +37,15 @@ public class Reclamo {
     private int numero_chasis;
     private String marca;
     private String modelo;
+    private Date fecha_reclamo;
+
+    public Date getFecha_reclamo() {
+        return fecha_reclamo;
+    }
+
+    public void setFecha_reclamo(Date fecha_reclamo) {
+        this.fecha_reclamo = fecha_reclamo;
+    }
 
     @JoinColumn(name = "placa", referencedColumnName = "placa",insertable = false, updatable = false)
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
