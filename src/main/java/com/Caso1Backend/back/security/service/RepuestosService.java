@@ -3,6 +3,7 @@ package com.Caso1Backend.back.security.service;
 import com.Caso1Backend.back.security.models.Repuestos;
 import com.Caso1Backend.back.security.repository.RepuestoRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,9 @@ public class RepuestosService {
     private RepuestoRepository repuestoRepository;
 
     public List<Repuestos> findAll() {
-        return repuestoRepository.findAll();
+    	List <Repuestos> repuestos = repuestoRepository.findAll();
+    	repuestos.sort(Comparator.comparing(Repuestos::getId_repuesto));
+        return repuestos;
     }
 
     public <S extends Repuestos> S save(S entity) {

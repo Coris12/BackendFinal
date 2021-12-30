@@ -20,6 +20,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import static java.rmi.server.RemoteRef.serialVersionUID;
 
 /**
  *
@@ -27,8 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "cliente")
-public class Cliente {
-
+public class Cliente implements Serializable{
+private static final long serialVersionUID = -8808096417666749035L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_cliente;
@@ -115,7 +117,7 @@ public class Cliente {
         this.factura = factura;
     }
 
-   
-    
-    
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }  
 }

@@ -1,5 +1,7 @@
 package com.Caso1Backend.back.security.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tallerSolicitud")
 public class TallerSolicitud {
@@ -20,51 +24,32 @@ public class TallerSolicitud {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id_solicitud;
 
-    @Column(name = "id_cliente", nullable = false)
-    private Long id_cliente;
+    @JoinColumn(name = "id_factura")
+    @ManyToOne()
+    private FacturaCabecera facturacabecera;
 
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Cliente cliente;
-
+    private String cedula;
+    private String nombre;
     private String placa;
-    
-    @JoinColumn(name = "id_repuesto", referencedColumnName = "id_repuesto", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Repuestos Repuestos;
- 
+    private String repuestos;
+    private Integer cantidad;
     private String descripcion;
 
     public TallerSolicitud() {
 
     }
 
-    public TallerSolicitud(Integer id_solicitud, Long id_cliente, Cliente cliente, String placa, int id_repuestos, String descripcion) {
+    public TallerSolicitud(Integer id_solicitud, FacturaCabecera facturacabecera, String cedula, String nombre,
+            String placa, String repuestos, Integer cantidad, String descripcion) {
+        super();
         this.id_solicitud = id_solicitud;
-        this.id_cliente = id_cliente;
-        this.cliente = cliente;
+        this.facturacabecera = facturacabecera;
+        this.cedula = cedula;
+        this.nombre = nombre;
         this.placa = placa;
-       
+        this.repuestos = repuestos;
+        this.cantidad = cantidad;
         this.descripcion = descripcion;
-    }
-
-
-    public Long getId_cliente() {
-        return id_cliente;
-    }
-
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Integer getId_solicitud() {
@@ -75,24 +60,60 @@ public class TallerSolicitud {
         this.id_solicitud = id_solicitud;
     }
 
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    
-
-
-
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getRepuestos() {
+        return repuestos;
+    }
+
+    public void setRepuestos(String repuestos) {
+        this.repuestos = repuestos;
+    }
+
+    public FacturaCabecera getFacturacabecera() {
+        return facturacabecera;
+    }
+
+    public void setFacturacabecera(FacturaCabecera facturacabecera) {
+        this.facturacabecera = facturacabecera;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
 }

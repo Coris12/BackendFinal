@@ -1,5 +1,6 @@
 package com.Caso1Backend.back.security.controller;
 
+import com.Caso1Backend.back.dto.ClienteDto;
 import java.util.Optional;
 import java.net.URI;
 import java.util.List;
@@ -7,9 +8,11 @@ import java.util.List;
 import com.Caso1Backend.back.security.models.Cliente;
 import com.Caso1Backend.back.security.service.ClienteService;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,6 +67,12 @@ public class ClienteController {
     private ResponseEntity<Boolean> deleteCliente(@PathVariable("id")int id){
         clienteService.deleteById(id);
         return ResponseEntity.ok(!(clienteService.getOneCliente(id)!=null));
+    }
+    
+    @CrossOrigin
+    @GetMapping(path = {"vehiculos/{cedula}"})
+    private ResponseEntity<ClienteDto> getVehiculos(@PathVariable("cedula") String cedula){
+    return new ResponseEntity<ClienteDto>(clienteService.getVehiculos(cedula), HttpStatus.OK);	
     }
 
 }

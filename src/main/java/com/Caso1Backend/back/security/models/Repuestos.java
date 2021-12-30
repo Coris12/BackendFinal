@@ -1,5 +1,7 @@
 package com.Caso1Backend.back.security.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,18 +12,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name ="repuesto")
-public class Repuestos {
+public class Repuestos implements Serializable {
 
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3343824993405918594L;
 @Id	
 @GeneratedValue(strategy=GenerationType.AUTO)
 private int id_repuesto;
 private String materiales;
 private Double precio;
 private Double stock;
-@OneToOne
-@JoinColumn(name = "id_solicitud")
-private TallerSolicitud tallerSolicitud;
-
+public Repuestos() {
+	
+}
+public Repuestos(int id_repuesto, String materiales, Double precio, Double stock) {
+	super();
+	this.id_repuesto = id_repuesto;
+	this.materiales = materiales;
+	this.precio = precio;
+	this.stock = stock;
+}
 public int getId_repuesto() {
 	return id_repuesto;
 }
@@ -34,34 +46,24 @@ public String getMateriales() {
 public void setMateriales(String materiales) {
 	this.materiales = materiales;
 }
-public double getPrecio() {
+public Double getPrecio() {
 	return precio;
 }
-public void setPrecio(double precio) {
+public void setPrecio(Double precio) {
 	this.precio = precio;
 }
-public double getStock() {
+public Double getStock() {
 	return stock;
 }
-public void setStock(double stock) {
+public void setStock(Double stock) {
 	this.stock = stock;
 }
-public Repuestos( String materiales, double precio, double stock) {
-	super();
-	this.materiales = materiales;
-	this.precio = precio;
-	this.stock = stock;
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
 
-public Repuestos(int id_repuesto, String materiales, double precio, double stock, TallerSolicitud tallerSolicitud) {
-	super();
-	this.id_repuesto = id_repuesto;
-	this.materiales = materiales;
-	this.precio = precio;
-	this.stock = stock;
-	this.tallerSolicitud = tallerSolicitud;
-}
-public Repuestos() {
-	
-}  
+
+
+
+
 }
