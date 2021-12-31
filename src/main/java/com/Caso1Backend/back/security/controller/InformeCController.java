@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Caso1Backend.back.security.models.InformeC;
+import com.Caso1Backend.back.security.models.OrdenReparacion;
 import com.Caso1Backend.back.security.service.InformeCService;
 import com.Caso1Backend.back.security.service.RepuestosService;
 
 
 @CrossOrigin
 @RestController
-@RequestMapping("/informeC/")
+@RequestMapping("/informe_c/")
 public class InformeCController {
 	
 	@Autowired 
     private InformeCService informeCService;
  
-	  @CrossOrigin
+	 /* @CrossOrigin
 	    @PostMapping()
 	    private ResponseEntity<InformeC> saveRepuestos(@RequestBody InformeC informeC){
 	
@@ -35,5 +36,11 @@ public class InformeCController {
 	        } catch (Exception e) {
 	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	        }
+	    }*/
+	  @CrossOrigin
+	    @PostMapping("/save")
+	    private ResponseEntity<InformeC> saveInformeC(@RequestBody InformeC informeC){
+		  return  new ResponseEntity<InformeC>(informeCService.save(informeC),HttpStatus.OK);
+	      
 	    }
 }

@@ -1,20 +1,12 @@
 package com.Caso1Backend.back.security.models;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tallerSolicitud")
@@ -24,35 +16,27 @@ public class TallerSolicitud {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id_solicitud;
 
-    @JoinColumn(name = "id_factura")
-    @ManyToOne()
-    private FacturaCabecera facturacabecera;
-
-    private String cedula;
-    private String nombre;
-    private String placa;
+    @ManyToOne
+    @JoinColumn(name = "id_orden")
+    private OrdenReparacion ordenreparacion;
+   
     private String repuestos;
     private Integer cantidad;
     private String descripcion;
 
     public TallerSolicitud() {
-
     }
 
-    public TallerSolicitud(Integer id_solicitud, FacturaCabecera facturacabecera, String cedula, String nombre,
-            String placa, String repuestos, Integer cantidad, String descripcion) {
-        super();
-        this.id_solicitud = id_solicitud;
-        this.facturacabecera = facturacabecera;
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.placa = placa;
-        this.repuestos = repuestos;
-        this.cantidad = cantidad;
-        this.descripcion = descripcion;
-    }
+    public TallerSolicitud(Integer id_solicitud, OrdenReparacion ordenreparacion, String repuestos, Integer cantidad,
+			String descripcion) {
+		this.id_solicitud = id_solicitud;
+		this.ordenreparacion = ordenreparacion;
+		this.repuestos = repuestos;
+		this.cantidad = cantidad;
+		this.descripcion = descripcion;
+	}
 
-    public Integer getId_solicitud() {
+	public Integer getId_solicitud() {
         return id_solicitud;
     }
 
@@ -84,36 +68,12 @@ public class TallerSolicitud {
         this.repuestos = repuestos;
     }
 
-    public FacturaCabecera getFacturacabecera() {
-        return facturacabecera;
-    }
+	public OrdenReparacion getOrdenreparacion() {
+		return ordenreparacion;
+	}
 
-    public void setFacturacabecera(FacturaCabecera facturacabecera) {
-        this.facturacabecera = facturacabecera;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
+	public void setOrdenreparacion(OrdenReparacion ordenreparacion) {
+		this.ordenreparacion = ordenreparacion;
+	}
 
 }

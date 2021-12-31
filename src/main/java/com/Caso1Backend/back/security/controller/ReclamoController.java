@@ -56,4 +56,10 @@ public class ReclamoController {
         System.out.println("entro en buscar reclamo by id");
         return reclamoService.getOneReclamo(id);
     }
+    @CrossOrigin
+    @GetMapping("/tipo/{estado}")
+    private ResponseEntity<List<Reclamo>> getEstado(@PathVariable("estado") int estado){
+    	  List<Reclamo> list = reclamoService.getEstado(estado);
+    	return new ResponseEntity(list, HttpStatus.OK);
+    }
 }

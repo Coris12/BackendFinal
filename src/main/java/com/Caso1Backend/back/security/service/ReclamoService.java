@@ -36,4 +36,8 @@ public class ReclamoService {
      return reclamoRepository.findAllActiveUsersNative();
     }
     
+    public List<Reclamo>getEstado(int estado){
+        return reclamoRepository.findByEstadoReclamo(estado);
+       }
+    
 }

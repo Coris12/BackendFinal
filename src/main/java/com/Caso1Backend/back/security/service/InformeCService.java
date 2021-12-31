@@ -11,7 +11,9 @@ public class InformeCService {
 	@Autowired
     private InformeRepository informeRepository;
 
+	 
     public <S extends InformeC> S save(S entity) {
         return informeRepository.save(entity);
     }
+    
 }
