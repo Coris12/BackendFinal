@@ -62,4 +62,18 @@ public class ReclamoController {
     	  List<Reclamo> list = reclamoService.getEstado(estado);
     	return new ResponseEntity(list, HttpStatus.OK);
     }
+    
+        @GetMapping("/searchAprobadas")
+    public ResponseEntity<List<Reclamo>> searchAprobadas() {
+        List<Reclamo> list = reclamoService.searchAprobadas();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+    
+        @GetMapping("/searchDenegadas")
+    public ResponseEntity<List<Reclamo>> searchDenegadas() {
+        List<Reclamo> list = reclamoService.searchDenegadas();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
 }
+
+
