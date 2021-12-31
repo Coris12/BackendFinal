@@ -40,4 +40,12 @@ public class ReclamoService {
         return reclamoRepository.findByEstadoReclamo(estado);
        }
     
+     public List<Reclamo>searchAprobadas(){
+     return reclamoRepository.findAllActiveReclamos();
+    }
+     
+      public List<Reclamo>searchDenegadas(){
+     return reclamoRepository.findAllActiveReclamosDenegado();
+    }
+    
 }
